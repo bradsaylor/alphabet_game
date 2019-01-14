@@ -1,62 +1,64 @@
 
-log.c,122
-#define RIGHT 15,346
-#define WRONG 16,362
-int log_result(24,527
-int make_new_line(67,1621
-int read_log_line(104,2380
+audio.c,56
+play_audio(char *path, char *cmd_string)play_audio3,2
 
-evaluate.c,25
-int evaluate_answer(3,2
+evaluate.c,74
+int evaluate_answer(char correct_letter, char answer)evaluate_answer3,2
 
-game.c,298
-#define NUM_TURNS 18,341
-#define CORRECT 19,372
-#define INCORRECT 20,402
-int  turn_counter 25,537
-char result 26,567
-char letter 27,597
-char answer 28,629
-char system_command[system_command29,661
-float weights[weights30,694
-float selection_space[selection_space31,713
-int main(37,837
+game.c,546
+#define NUM_TURNS NUM_TURNS23,504
+#define CORRECT CORRECT24,535
+#define INCORRECT INCORRECT25,565
+int  turn_counter        = 0;turn_counter30,700
+char result              = 0;result31,730
+char letter              = ' ';letter32,760
+char answer              = ' ';answer33,792
+char system_command[50]  = "\0";system_command34,824
+float weights[26];weights35,857
+float selection_space[26];selection_space36,876
+int main(int argc, char *argv[])main42,1000
+int handle_arguments(int argc, char *argv[])handle_arguments131,3044
 
-getch.c,16
-int getch(6,62
+getch.c,27
+int getch(void)getch6,62
 
-graphics.c,711
-static const char welcome_graphic[welcome_graphic6,61
-static const char welcome_graphic2[welcome_graphic225,1020
-static const char correct_graphic[correct_graphic44,1980
-static const char correct_graphic2[correct_graphic263,2940
-static const char incorrect_graphic[incorrect_graphic84,3962
-static const char incorrect_graphic2[incorrect_graphic2103,4924
-int welcome_screen_sequence(123,5887
-int welcome_screen(148,6329
-int welcome_screen2(159,6498
-int correct_screen_sequence(169,6669
-int correct_screen(194,7111
-int correct_screen2(205,7280
-int incorrect_screen_sequence(216,7452
-int incorrect_screen(241,7910
-int incorrect_screen2(252,8083
-int clear_screen(265,8261
-void delay(271,8358
+graphics.c,940
+static const char welcome_graphic[]=welcome_graphic6,61
+static const char welcome_graphic2[]=welcome_graphic225,1020
+static const char correct_graphic[]=correct_graphic44,1980
+static const char correct_graphic2[]=correct_graphic263,2940
+static const char incorrect_graphic[]=incorrect_graphic84,3962
+static const char incorrect_graphic2[]=incorrect_graphic2103,4924
+int welcome_screen_sequence()welcome_screen_sequence123,5887
+int welcome_screen()welcome_screen148,6329
+int welcome_screen2()welcome_screen2159,6498
+int correct_screen_sequence()correct_screen_sequence169,6669
+int correct_screen()correct_screen194,7111
+int correct_screen2()correct_screen2205,7280
+int incorrect_screen_sequence()incorrect_screen_sequence216,7452
+int incorrect_screen()incorrect_screen241,7910
+int incorrect_screen2()incorrect_screen2252,8083
+int clear_screen()clear_screen265,8261
+void delay(int milliseconds)delay271,8358
 
-old_pick_letter.c,78
-char pick_letter(8,139
-char receive_input(20,362
-int assign_weights(29,475
+log.c,338
+#define RIGHT RIGHT16,371
+#define WRONG WRONG17,387
+int log_result(int result, char letter, char answer)log_result24,551
+int make_new_line(uint8_t result, char * file_line, char * new_line)make_new_line67,1644
+int read_log_line(char *file_line, int *last_ten,read_log_line104,2403
+int generate_report()generate_report120,2737
 
-audio.c,16
-play_audio(3,2
+old_pick_letter.c,148
+char pick_letter()pick_letter8,139
+char receive_input(char letter)receive_input20,362
+int assign_weights(int weights[26])assign_weights29,475
 
-pick_letter.c,187
-#define N 9,137
-#define M 10,151
-char alphabet[alphabet12,166
-int pick_letter_main(14,215
-int calc_weights(53,963
-int build_selection_space(102,2053
-char choose_a_letter(118,2509
+pick_letter.c,423
+#define N N9,137
+#define M M10,151
+char alphabet[] = "abcdefghijklmnopqrstuvwxyz";alphabet12,166
+int calc_weights(char *file_name, float *letter_weights)calc_weights18,322
+int transform_weights(float *letter_weights)transform_weights57,1176
+int build_selection_space(float *letter_weights, float *selection_space)build_selection_space73,1477
+char choose_a_letter(float *selection_space)choose_a_letter89,1933

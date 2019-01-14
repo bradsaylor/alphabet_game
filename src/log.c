@@ -1,4 +1,5 @@
 #include "log.h"
+#include "pick_letter.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -19,7 +20,6 @@ int make_new_line(uint8_t result, char * file_line, char * new_line);
 /*****************************************************************
 INTERFACE
  *****************************************************************/
-
 
 int log_result(int result, char letter, char answer)
 {
@@ -62,7 +62,7 @@ int log_result(int result, char letter, char answer)
 }
 
 /*****************************************************************
-xIMPLEMENTATION
+IMPLEMENTATION
  *****************************************************************/
 int make_new_line(uint8_t result, char * file_line, char * new_line)
 {
@@ -113,6 +113,60 @@ int read_log_line(char *file_line, int *last_ten,
 	   &last_ten[8], &last_ten[9]
 	);
 
+
+    return 0;
+}
+
+int generate_report()
+{
+    float report_weights[26];
+    int sorted_weights[26][2];
+    char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
+    
+    calc_weights(LOG_FILE, report_weights);
+
+    for(int count = 0; count < 26; count++)
+    {
+	sorted_weights[count][0] = (int)alphabet[count];
+	sorted_weights[count][1] = (int)report_weights[count];
+    }
+
+    int sort_done = 0;
+    while(!sort_done)
+    {
+	int temp_letter;
+	int temp_weight;
+	for(int count = 0; count < 25; count++)
+	{
+	    sort_done = 1;
+	    if(sorted_weights[count][1] < sorted_weights[count+1][1])
+	    {
+		temp_weight = sorted_weights[count+1][1]; 
+		temp_letter = sorted_weights[count+1][0];
+
+		sorted_weights[count+1][1] = sorted_weights[count][1];
+		sorted_weights[count+1][0] = sorted_weights[count][0];
+
+		sorted_weights[count][1] = temp_weight;
+		sorted_weights[count][0] = temp_letter;
+
+		sort_done = 0;
+		break;
+	    }
+	}
+    }
+    printf("\n\n******************************************************************\n");
+    printf("*SORTED PERFORMANCE DIFFERENTIAL FOR LAST 10 TURNS OF EACH LETTER*\n");
+    printf("******************************************************************\n\n");   
+
+    for(int count = 0; count < 26; count++)
+    {
+        printf("%c:\t%d\n", (char)sorted_weights[count][0], (int)sorted_weights[count][1]);
+    }
+
+    printf("\n\n*****************************************************************\n");
+    printf("*END OF REPORT                                                  *\n");
+    printf("*****************************************************************\n\n");   
 
     return 0;
 }

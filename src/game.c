@@ -13,6 +13,11 @@
 #include "getch.h"
 
 /******************************************
+LOCAL FUNCTION DECLARATIONS
+******************************************/
+int handle_arguments(int argc, char *argv[]);
+
+/******************************************
 LOCAL MACROS
 ******************************************/
 #define NUM_TURNS           10
@@ -34,10 +39,17 @@ float selection_space[26];
 /******************************************
 MAIN()
 ******************************************/
-int main()
+int main(int argc, char *argv[])
 {
+    //handle command line arguments
+    if(argc > 1){
+	handle_arguments(argc, argv);
+	return 0;
+    }
+    
 //    assign_weights(weights);
     calc_weights(LOG_FILE, weights);
+    transform_weights(weights);
     build_selection_space(weights, selection_space);
 
     // Resize bash window
@@ -64,15 +76,17 @@ int main()
 	fflush(stdout);
 
 	// Play associated audio clip for letter
-	sprintf(system_command, "mpg123 -q %s%c%s",
+	sprintf(system_command, "sudo mpg123 -q %s%c%s",
 		AUDIO_PATH_LETTERS, letter, AUDIO_SUFFIX);
+#ifdef ENABLE_MEDIA
 	system(system_command);
-
+#endif
 	// Play assocated audio clip for Letterland character
-	sprintf(system_command, "mpg123 -q %s%c_char%s",
+	sprintf(system_command, "sudo mpg123 -q %s%c_char%s",
 		AUDIO_PATH_CHARS, letter, AUDIO_SUFFIX);	
+#ifdef ENABLE_MEDIA
 	system(system_command);
-
+#endif
 	// Evaluate the letter choice
 
 	// If correct
@@ -82,10 +96,11 @@ int main()
 	    correct_screen_sequence();
 
 	    // Play "correct" audio file
-            sprintf(system_command, "mpg123 -q %s%s",
+            sprintf(system_command, "sudo mpg123 -q %s%s",
 		    AUDIO_PATH_RESULT, "correct.mp3");
+#ifdef ENABLE_MEDIA
 	    system(system_command);
-
+#endif
 	    // Log the result as correct
 	    log_result(CORRECT, letter, answer);
 
@@ -97,10 +112,11 @@ int main()
 	    incorrect_screen_sequence();
 
 	    // Play "incorrect" audio file
-	    sprintf(system_command, "mpg123 -q %s%s",
+	    sprintf(system_command, "sudo mpg123 -q %s%s",
 		    AUDIO_PATH_RESULT, "incorrect.mp3");
+#ifdef ENABLE_MEDIA
 	    system(system_command);
-
+#endif
 	    // Log result as incorrect
 	    log_result(INCORRECT, letter, answer);
 	}
@@ -112,3 +128,22 @@ int main()
     return 0;
 }
 
+int handle_arguments(int argc, char *argv[])
+{
+    if (argc > 2)
+    {
+	printf("\n\n***Too many command line arguments ... aborting\n\n");
+	return 1;
+    }
+
+    if (!strcmp(argv[1], "-report")){
+        generate_report();
+	return 0;
+    } 
+    else{
+	printf("\n\n***Argument was not understood ... aborting***\n\n");
+	return 1;
+    }
+
+    return 0;
+}

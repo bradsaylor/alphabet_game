@@ -11,41 +11,6 @@
 
 char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 
-int pick_letter_main()
-{
-    FILE *fp;
-
-    //generate log file
-//    fp = fopen("log_file.txt", "w");
-//    make_log(fp);
-//    fclose(fp);
-
-    //cacluate weigthts
-    fp = fopen("log_file.txt", "r");
-    float letter_weights[26];
-//    calc_weights(fp, letter_weights);
-
-    //process letter weights
-
-    //build selection space
-    float selection_space[26];
-    build_selection_space(letter_weights, selection_space);
-
-    //pick a letter
-
-    //seed rand()
-    time_t t;
-    srand((unsigned) time(&t));    
-    char choice;
-
-    choice = choose_a_letter(selection_space);
-    printf("the choice was %c\n", choice);
-
-    return 0;
-}
-
-
-
 /******************************************
 HELPER FUNCTIONS
  ******************************************/
@@ -85,6 +50,12 @@ int calc_weights(char *file_name, float *letter_weights)
 //	printf("%c: %.2f\n", letter, letter_weights[count]);
 	count++;
     }
+
+    return 0;
+}
+
+int transform_weights(float *letter_weights)
+{
 
         for(int i = 0; i < 26; i++)
     {

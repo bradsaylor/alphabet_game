@@ -17,7 +17,7 @@ _OBJ = game.o log.o pick_letter.o evaluate.o graphics.o getch.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS) #-DENABLE_MEDIA
 
 alphabet_game: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
