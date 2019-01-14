@@ -1,0 +1,102 @@
+
+include/graphics.h,25
+#define _WELCOME_H_2,20
+
+include/log.h,103
+#define _LOG_H_2,16
+#define LOG_FORMAT 14,372
+#define MAX_FILE_LINE 15,447
+#define LOG_FILE 16,472
+
+include/old_pick_letter.h,29
+#define PICK_LETTER_H__2,23
+
+include/pick_letter.h,29
+#define PICK_LETTER_H__2,23
+
+include/game.h,22
+#define _GAME_H_2,17
+
+include/audio.h,148
+#define _AUDIO_H_2,18
+#define AUDIO_PATH_LETTERS 4,37
+#define AUDIO_PATH_CHARS 5,91
+#define AUDIO_PATH_RESULT 6,148
+#define AUDIO_SUFFIX 7,201
+
+include/evaluate.h,26
+#define _EVALUATE_H_2,21
+
+pick_letter/pick_letter.c,199
+#define N 11,290
+#define M 12,304
+char alphabet[alphabet14,319
+int main(16,368
+int make_log(65,1328
+int calc_weights(94,1802
+int build_selection_space(122,2454
+char choose_a_letter(138,2910
+
+src/log.c,122
+#define RIGHT 15,346
+#define WRONG 16,362
+int log_result(24,527
+int make_new_line(67,1621
+int read_log_line(104,2380
+
+src/evaluate.c,25
+int evaluate_answer(3,2
+
+src/game.c,298
+#define NUM_TURNS 17,323
+#define CORRECT 18,354
+#define INCORRECT 19,384
+int  turn_counter 24,519
+char result 25,549
+char letter 26,579
+char answer 27,611
+char system_command[system_command28,643
+float weights[weights29,676
+float selection_space[selection_space30,695
+int main(36,819
+
+src/getch.c,16
+int getch(6,62
+
+src/graphics.c,711
+static const char welcome_graphic[welcome_graphic6,61
+static const char welcome_graphic2[welcome_graphic225,1020
+static const char correct_graphic[correct_graphic44,1980
+static const char correct_graphic2[correct_graphic263,2940
+static const char incorrect_graphic[incorrect_graphic84,3962
+static const char incorrect_graphic2[incorrect_graphic2103,4924
+int welcome_screen_sequence(123,5887
+int welcome_screen(148,6329
+int welcome_screen2(159,6498
+int correct_screen_sequence(169,6669
+int correct_screen(194,7111
+int correct_screen2(205,7280
+int incorrect_screen_sequence(216,7452
+int incorrect_screen(241,7910
+int incorrect_screen2(252,8083
+int clear_screen(265,8261
+void delay(271,8358
+
+src/old_pick_letter.c,78
+char pick_letter(8,139
+char receive_input(20,362
+int assign_weights(29,475
+
+src/audio.c,16
+play_audio(3,2
+
+src/pick_letter.c,188
+#define N 9,137
+#define M 10,151
+char alphabet[alphabet12,166
+int pick_letter_main(14,215
+int calc_weights(62,1194
+int build_selection_space(100,2011
+char choose_a_letter(116,2467
+
+include/getch.h,0

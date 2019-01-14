@@ -1,0 +1,62 @@
+
+log.c,122
+#define RIGHT 15,346
+#define WRONG 16,362
+int log_result(24,527
+int make_new_line(67,1621
+int read_log_line(104,2380
+
+evaluate.c,25
+int evaluate_answer(3,2
+
+game.c,298
+#define NUM_TURNS 18,341
+#define CORRECT 19,372
+#define INCORRECT 20,402
+int  turn_counter 25,537
+char result 26,567
+char letter 27,597
+char answer 28,629
+char system_command[system_command29,661
+float weights[weights30,694
+float selection_space[selection_space31,713
+int main(37,837
+
+getch.c,16
+int getch(6,62
+
+graphics.c,711
+static const char welcome_graphic[welcome_graphic6,61
+static const char welcome_graphic2[welcome_graphic225,1020
+static const char correct_graphic[correct_graphic44,1980
+static const char correct_graphic2[correct_graphic263,2940
+static const char incorrect_graphic[incorrect_graphic84,3962
+static const char incorrect_graphic2[incorrect_graphic2103,4924
+int welcome_screen_sequence(123,5887
+int welcome_screen(148,6329
+int welcome_screen2(159,6498
+int correct_screen_sequence(169,6669
+int correct_screen(194,7111
+int correct_screen2(205,7280
+int incorrect_screen_sequence(216,7452
+int incorrect_screen(241,7910
+int incorrect_screen2(252,8083
+int clear_screen(265,8261
+void delay(271,8358
+
+old_pick_letter.c,78
+char pick_letter(8,139
+char receive_input(20,362
+int assign_weights(29,475
+
+audio.c,16
+play_audio(3,2
+
+pick_letter.c,187
+#define N 9,137
+#define M 10,151
+char alphabet[alphabet12,166
+int pick_letter_main(14,215
+int calc_weights(53,963
+int build_selection_space(102,2053
+char choose_a_letter(118,2509
